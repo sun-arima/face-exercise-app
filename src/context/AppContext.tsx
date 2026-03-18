@@ -11,6 +11,12 @@ interface AppState {
   setShareActivity: (v: boolean) => void;
   shareCount: boolean;
   setShareCount: (v: boolean) => void;
+  shareMentalScore: boolean;
+  setShareMentalScore: (v: boolean) => void;
+  shareTrainingDetail: boolean;
+  setShareTrainingDetail: (v: boolean) => void;
+  shareTrainingVideo: boolean;
+  setShareTrainingVideo: (v: boolean) => void;
   showBadgeModal: boolean;
   setShowBadgeModal: (v: boolean) => void;
   completedExercise: boolean;
@@ -24,6 +30,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [goalMinutes, setGoalMinutes] = useState(15);
   const [shareActivity, setShareActivity] = useState(true);
   const [shareCount, setShareCount] = useState(true);
+  const [shareMentalScore, setShareMentalScore] = useState(false);
+  const [shareTrainingDetail, setShareTrainingDetail] = useState(false);
+  const [shareTrainingVideo, setShareTrainingVideo] = useState(false);
   const [showBadgeModal, setShowBadgeModal] = useState(false);
   const [completedExercise, setCompletedExercise] = useState(false);
 
@@ -38,6 +47,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
         setShareActivity,
         shareCount,
         setShareCount,
+        shareMentalScore,
+        setShareMentalScore,
+        shareTrainingDetail,
+        setShareTrainingDetail,
+        shareTrainingVideo,
+        setShareTrainingVideo,
         showBadgeModal,
         setShowBadgeModal,
         completedExercise,

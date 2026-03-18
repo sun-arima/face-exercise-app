@@ -20,13 +20,13 @@ export default function RootLayout({
     <html lang="ja" className={noto.variable}>
       <body className={`${noto.className} antialiased bg-gray-200 h-screen flex items-center justify-center overflow-hidden`}>
         <AppProvider>
-          <div className="relative mx-auto" style={{ width: 'min(430px, 90vw)', height: 'min(932px, 95vh)' }}>
+          <div className="relative mx-auto" style={{ aspectRatio: '430 / 932', height: 'min(932px, 95vh)', maxWidth: '90vw' }}>
             {/* スマホ外枠 */}
             <div className="absolute inset-0 rounded-[3rem] border-[12px] border-gray-900 pointer-events-none z-50" />
             {/* ノッチ */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-8 bg-gray-900 rounded-b-2xl z-50" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[35%] h-[3.2%] bg-gray-900 rounded-b-2xl z-50" />
             {/* ホームインジケーター */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-32 h-1 bg-gray-900 rounded-full z-50" />
+            <div className="absolute bottom-[1%] left-1/2 -translate-x-1/2 w-[30%] h-1 bg-gray-900 rounded-full z-50" />
             {/* コンテンツエリア */}
             <PhoneLayout>{children}</PhoneLayout>
           </div>
