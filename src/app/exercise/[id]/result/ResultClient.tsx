@@ -11,11 +11,11 @@ import {
 } from "recharts";
 import { badges } from "@/lib/dummyData";
 
-const scoreCards = [
-  { label: "飲み込む力", change: 12, up: true },
-  { label: "脳の刺激", change: 5, up: true },
-  { label: "表情の豊かさ", change: 18, up: true },
-  { label: "声を出す力", change: 8, up: true },
+const performanceData = [
+  { label: "口の開き", score: 82, maxScore: 100 },
+  { label: "舌の動き", score: 75, maxScore: 100 },
+  { label: "頬の動き", score: 90, maxScore: 100 },
+  { label: "表情の対称性", score: 68, maxScore: 100 },
 ];
 
 const radarData = [
@@ -37,66 +37,92 @@ export default function ResultClient() {
       <p className="text-lg text-gray-600 text-center">
         正確に動けていました 👍
       </p>
+      <p className="text-sm text-gray-500 text-center leading-relaxed">
+        今回の体操の結果をまとめました。
+        <br />
+        お顔の変化や動作の正確さを確認できます。
+      </p>
 
-      <div className="flex gap-4">
-        <div className="flex-1 flex flex-col items-center gap-2">
-          <div className="w-full h-28 bg-gray-300 rounded-2xl" />
-          <span className="text-lg text-gray-600">体操前</span>
-        </div>
-        <div className="flex-1 flex flex-col items-center gap-2">
-          <div className="w-full h-28 bg-gray-300 rounded-2xl" />
-          <span className="text-lg text-gray-600">体操後</span>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-2xl shadow-sm p-6 text-center">
-        <p className="text-lg text-gray-700">今日の体操時間：3分42秒</p>
-      </div>
-
-      <div className="grid grid-cols-2 gap-3">
-        {scoreCards.map((sc) => (
-          <div
-            key={sc.label}
-            className={`rounded-2xl p-4 text-center ${
-              sc.up ? "bg-orange-100" : "bg-gray-100"
-            }`}
-          >
-            <p className="text-lg font-medium text-gray-700">{sc.label}</p>
-            <p className="text-xl font-bold text-orange-500">
-              ↑{sc.change}%
-            </p>
+      {/* 体操前後の顔比較 */}
+      <div>
+        <p className="text-sm text-gray-500 mb-2">体操前後のお顔の変化</p>
+        <div className="flex gap-4">
+          <div className="flex-1 flex flex-col items-center gap-2">
+            <div className="w-full h-28 bg-gray-300 rounded-2xl" />
+            <span className="text-lg text-gray-600">体操前</span>
           </div>
-        ))}
+          <div className="flex-1 flex flex-col items-center gap-2">
+            <div className="w-full h-28 bg-gray-300 rounded-2xl" />
+            <span className="text-lg text-gray-600">体操後</span>
+          </div>
+        </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm p-4">
-        <ResponsiveContainer width="100%" height={250}>
-          <RadarChart data={radarData}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" tick={{ fontSize: 12 }} />
-            <Radar
-              name="体操前"
-              dataKey="before"
-              stroke="#d1d5db"
-              fill="#d1d5db"
-              fillOpacity={0.3}
-            />
-            <Radar
-              name="体操後"
-              dataKey="after"
-              stroke="#f97316"
-              fill="#f97316"
-              fillOpacity={0.3}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
-        <p className="text-lg font-bold text-center text-orange-500 mt-2">
-          一番伸びた：表情の豊かさ ＋20pt
-        </p>
+      {/* 体操時間 */}
+      <div className="bg-white rounded-2xl shadow-sm p-6 text-center">
+        <p className="text-lg text-gray-700">今日の体操時間：<span className="font-bold text-orange-500">3分42秒</span></p>
+      </div>
+
+      {/* 動作の正確性パラメータ */}
+      <div>
+        <p className="text-sm text-gray-500 mb-2">動作の正確性</p>
+        <div className="bg-white rounded-2xl shadow-sm p-5 space-y-3">
+          {performanceData.map((item) => (
+            <div key={item.label}>
+              <div className="flex justify-between mb-1">
+                <span className="text-base text-gray-700">{item.label}</span>
+                <span className="text-base font-bold text-orange-500">{item.score}点</span>
+              </div>
+              <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-orange-400 rounded-full transition-all duration-500"
+                  style={{ width: `${item.score}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* レーダーチャート */}
+      <div>
+        <p className="text-sm text-gray-500 mb-2">体操前後の総合比較</p>
+        <div className="bg-white rounded-2xl shadow-sm p-4">
+          <ResponsiveContainer width="100%" height={220}>
+            <RadarChart data={radarData}>
+              <PolarGrid />
+              <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11 }} />
+              <Radar
+                name="体操前"
+                dataKey="before"
+                stroke="#d1d5db"
+                fill="#d1d5db"
+                fillOpacity={0.3}
+              />
+              <Radar
+                name="体操後"
+                dataKey="after"
+                stroke="#f97316"
+                fill="#f97316"
+                fillOpacity={0.3}
+              />
+            </RadarChart>
+          </ResponsiveContainer>
+          <div className="flex justify-center gap-6 text-sm text-gray-500">
+            <div className="flex items-center gap-1">
+              <div className="w-3 h-3 bg-gray-300 rounded-full" />
+              <span>体操前</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-3 h-3 bg-orange-400 rounded-full" />
+              <span>体操後</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <button
-        onClick={() => router.push("/home")}
+        onClick={() => router.push("/home-panda")}
         className="w-full h-[60px] bg-orange-500 text-white text-xl font-bold rounded-2xl active:bg-orange-600 transition-colors duration-300"
       >
         ホームに戻る

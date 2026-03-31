@@ -5,6 +5,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   BarChart,
   Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -15,13 +17,16 @@ import {
   prevWeeklyLog,
   dailyLog,
   prevDailyLog,
+  weeklyMentalScore,
+  prevWeeklyMentalScore,
 } from "@/lib/dummyData";
 
 export default function LogPage() {
-  const [weekOffset, setWeekOffset] = useState(0); // 0 = this week, 1 = prev week
+  const [weekOffset, setWeekOffset] = useState(0);
 
   const currentWeekly = weekOffset === 0 ? weeklyLog : prevWeeklyLog;
   const currentDaily = weekOffset === 0 ? dailyLog : prevDailyLog;
+  const currentMental = weekOffset === 0 ? weeklyMentalScore : prevWeeklyMentalScore;
 
   const totalMinutes = currentWeekly.reduce((sum, d) => sum + d.minutes, 0);
   const prevTotal = prevWeeklyLog.reduce((sum, d) => sum + d.minutes, 0);
@@ -63,8 +68,9 @@ export default function LogPage() {
         )}
       </div>
 
-      {/* 日別折れ線グラフ */}
+      {/* 体操時間グラフ */}
       <div className="bg-white rounded-2xl shadow-sm p-4">
+        <p className="text-base font-bold text-gray-700 mb-2">📊 日別の体操時間</p>
         <ResponsiveContainer width="100%" height={180}>
           <BarChart data={currentWeekly}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -77,6 +83,27 @@ export default function LogPage() {
             />
           </BarChart>
         </ResponsiveContainer>
+      </div>
+
+      {/* 心の状態スコア推移グラフ */}
+      <div className="bg-white rounded-2xl shadow-sm p-4">
+        <p className="text-base font-bold text-gray-700 mb-2">😊 心の状態スコア</p>
+        <ResponsiveContainer width="100%" height={180}>
+          <LineChart data={currentMental}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="day" tick={{ fontSize: 14 }} />
+            <YAxis domain={[0, 100]} tick={{ fontSize: 12 }} />
+            <Line
+              type="monotone"
+              dataKey="score"
+              stroke="#ec4899"
+              strokeWidth={3}
+              dot={{ fill: "#ec4899", r: 4 }}
+              connectNulls={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+        <p className="text-xs text-gray-400 mt-1">※ 0の日は体操をお休みした日です</p>
       </div>
 
       {/* タイムライン */}

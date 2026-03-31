@@ -111,8 +111,8 @@ export const familyReactions = [
     message: "体操3回達成しました！",
     seen: true,
     stamps: [
-      { emoji: "❤️", from: "娘" },
-      { emoji: "👏", from: "息子" },
+      { emoji: "❤️", from: "佐藤 美咲" },
+      { emoji: "👏", from: "佐藤 健太" },
     ],
   },
   {
@@ -120,7 +120,7 @@ export const familyReactions = [
     message: "体操2回達成しました！",
     seen: true,
     stamps: [
-      { emoji: "😊", from: "娘" },
+      { emoji: "😊", from: "佐藤 美咲" },
     ],
   },
   {
@@ -140,30 +140,36 @@ export const analysisReport = {
   suggestedMenu: "ほっぺ膨らまし",
   suggestedReason:
     "表情筋の改善が顕著です。さらに鍛えることでより効果的です。",
+  totalTrainingTime: "2時間18分",
+  totalSessions: 12,
   indicators: [
     {
       name: "飲み込む力",
       score: 72,
+      trainingTime: "32分",
+      sessions: 3,
       comment: "飲み込む力が安定しています。舌回し体操を継続しましょう。",
-      improvement: 12,
     },
     {
       name: "脳の刺激",
       score: 65,
+      trainingTime: "28分",
+      sessions: 3,
       comment: "集中力が向上しています。目の体操も取り入れてみましょう。",
-      improvement: 5,
     },
     {
       name: "表情の豊かさ",
       score: 85,
+      trainingTime: "45分",
+      sessions: 4,
       comment: "大きな改善が見られます！この調子で続けましょう。",
-      improvement: 18,
     },
     {
       name: "声を出す力",
       score: 70,
+      trainingTime: "33分",
+      sessions: 2,
       comment: "声のハリが出てきています。あいうえお体操を続けましょう。",
-      improvement: 8,
     },
   ],
 };
@@ -247,6 +253,26 @@ export const prevDailyLog = [
     date: "3月3日（日）",
     records: [{ menu: "ほっぺ膨らまし", time: "2分30秒", tags: ["表情の豊かさ"] }],
   },
+];
+
+export const weeklyMentalScore = [
+  { day: "月", score: 72 },
+  { day: "火", score: 0 },
+  { day: "水", score: 80 },
+  { day: "木", score: 65 },
+  { day: "金", score: 85 },
+  { day: "土", score: 78 },
+  { day: "日", score: 0 },
+];
+
+export const prevWeeklyMentalScore = [
+  { day: "月", score: 60 },
+  { day: "火", score: 0 },
+  { day: "水", score: 68 },
+  { day: "木", score: 55 },
+  { day: "金", score: 70 },
+  { day: "土", score: 65 },
+  { day: "日", score: 62 },
 ];
 
 export const weeklyIndicators = [

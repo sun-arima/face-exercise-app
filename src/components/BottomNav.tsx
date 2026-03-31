@@ -4,7 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Home, BookOpen, BarChart3, Users } from "lucide-react";
 
 const tabs = [
-  { label: "ホーム", icon: Home, path: "/home" },
+  { label: "ホーム", icon: Home, path: "/home-panda" },
   { label: "ログ", icon: BookOpen, path: "/log" },
   { label: "分析", icon: BarChart3, path: "/analysis" },
   { label: "家族", icon: Users, path: "/family" },

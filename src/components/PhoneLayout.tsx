@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import BottomNav from "./BottomNav";
 
-const navPages = ["/home", "/log", "/analysis", "/family", "/exercise"];
+const navPages = ["/home", "/home-panda", "/log", "/analysis", "/family", "/exercise"];
 
 export default function PhoneLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

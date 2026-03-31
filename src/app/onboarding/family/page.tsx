@@ -60,7 +60,7 @@ export default function FamilySettingPage() {
       <div className="shrink-0">
         <h1 className="text-2xl font-bold text-gray-800">家族共有設定</h1>
         <p className="text-sm text-gray-600 mt-1">
-          家族に共有する内容を選んでください
+          あなたの体操の記録を、離れて暮らすご家族に自動で届けることができます。共有したい内容を選んでください。
         </p>
       </div>
 
@@ -76,28 +76,18 @@ export default function FamilySettingPage() {
               <span className="text-sm text-gray-800 flex-1 mr-3">
                 {item.label}
               </span>
-              <div className="flex gap-2 shrink-0">
-                <button
-                  onClick={() => handleSetValue(item.key, true)}
-                  className={`px-3.5 py-1.5 rounded-xl text-sm font-medium transition-colors duration-200 ${
-                    value
-                      ? "bg-orange-500 text-white"
-                      : "bg-gray-100 text-gray-500 border border-gray-200"
+              <button
+                onClick={() => handleSetValue(item.key, !value)}
+                className={`w-14 h-8 rounded-full relative transition-colors duration-300 shrink-0 ${
+                  value ? "bg-orange-500" : "bg-gray-300"
+                }`}
+              >
+                <div
+                  className={`w-6 h-6 bg-white rounded-full absolute top-1 transition-all duration-300 ${
+                    value ? "left-7" : "left-1"
                   }`}
-                >
-                  はい
-                </button>
-                <button
-                  onClick={() => handleSetValue(item.key, false)}
-                  className={`px-3.5 py-1.5 rounded-xl text-sm font-medium transition-colors duration-200 ${
-                    !value
-                      ? "bg-gray-600 text-white"
-                      : "bg-gray-100 text-gray-500 border border-gray-200"
-                  }`}
-                >
-                  いいえ
-                </button>
-              </div>
+                />
+              </button>
             </div>
           );
         })}
