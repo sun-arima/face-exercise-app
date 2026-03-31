@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={noto.variable}>
-      <body className={`${noto.className} antialiased bg-gray-200 h-screen flex items-center justify-center overflow-hidden`}>
+      <body className={`${noto.className} antialiased bg-gray-200 h-screen flex items-center justify-center overflow-hidden p-2`}>
         <AppProvider>
-          <div className="relative mx-auto" style={{ aspectRatio: '430 / 932', height: 'min(932px, 95vh)', maxWidth: '90vw' }}>
+          <div className="relative mx-auto" style={{ aspectRatio: '430 / 932', height: '98vh', maxHeight: '932px', maxWidth: '95vw' }}>
             {/* スマホ外枠 */}
             <div className="absolute inset-0 rounded-[3rem] border-[12px] border-gray-900 pointer-events-none z-50" />
             {/* ノッチ */}
