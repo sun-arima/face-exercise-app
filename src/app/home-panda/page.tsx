@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Heart, Sparkles, Apple, Flame, Mail } from "lucide-react";
 import { user } from "@/lib/dummyData";
 import AnimatedCat from "@/components/AnimatedCat";
