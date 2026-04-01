@@ -2,28 +2,18 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  Radar,
-  ResponsiveContainer,
-} from "recharts";
 import { badges } from "@/lib/dummyData";
 
 const performanceData = [
   { label: "口の開き", score: 82, maxScore: 100 },
   { label: "舌の動き", score: 75, maxScore: 100 },
-  { label: "頬の動き", score: 90, maxScore: 100 },
+  { label: "頬の動き", score: 100, maxScore: 100 },
   { label: "表情の対称性", score: 68, maxScore: 100 },
 ];
 
-const radarData = [
-  { subject: "表情の豊かさ", before: 50, after: 70 },
-  { subject: "飲み込む力", before: 50, after: 60 },
-  { subject: "声を出す力", before: 50, after: 65 },
-  { subject: "脳の刺激", before: 50, after: 55 },
-];
+const mentalScore = 78;
+const mentalEmoji = "😊";
+const mentalMessage = "良い調子ですね！";
 
 export default function ResultClient() {
   const router = useRouter();
@@ -32,11 +22,18 @@ export default function ResultClient() {
   return (
     <div className="bg-amber-50 min-h-screen px-6 py-8 space-y-6">
       <h1 className="text-2xl font-bold text-gray-800 text-center">
-        お疲れ様でした！
+        体操お疲れ様でした！
       </h1>
-      <p className="text-lg text-gray-600 text-center">
-        正確に動けていました 👍
-      </p>
+
+      {/* 猫のごはん獲得 */}
+      <div className="flex items-center justify-center gap-3 bg-orange-50 border-2 border-orange-200 rounded-2xl px-5 py-3">
+        <span className="text-3xl">🍖</span>
+        <div>
+          <p className="text-base font-bold text-orange-600">猫の餌を手に入れました！</p>
+          <p className="text-sm text-orange-400 font-medium">+10pt</p>
+        </div>
+      </div>
+
       <p className="text-sm text-gray-500 text-center leading-relaxed">
         今回の体操の結果をまとめました。
         <br />
@@ -48,11 +45,17 @@ export default function ResultClient() {
         <p className="text-sm text-gray-500 mb-2">体操前後のお顔の変化</p>
         <div className="flex gap-4">
           <div className="flex-1 flex flex-col items-center gap-2">
-            <div className="w-full h-28 bg-gray-300 rounded-2xl" />
+            <div className="w-full h-28 rounded-2xl overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/before.png" alt="体操前" className="w-full h-full object-cover" />
+            </div>
             <span className="text-lg text-gray-600">体操前</span>
           </div>
           <div className="flex-1 flex flex-col items-center gap-2">
-            <div className="w-full h-28 bg-gray-300 rounded-2xl" />
+            <div className="w-full h-28 rounded-2xl overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/after.png" alt="体操後" className="w-full h-full object-cover" />
+            </div>
             <span className="text-lg text-gray-600">体操後</span>
           </div>
         </div>
@@ -67,57 +70,48 @@ export default function ResultClient() {
       <div>
         <p className="text-sm text-gray-500 mb-2">動作の正確性</p>
         <div className="bg-white rounded-2xl shadow-sm p-5 space-y-3">
-          {performanceData.map((item) => (
+          <p className="text-lg font-bold text-green-600">正確に動けていました 👍</p>
+          {performanceData.map((item) => {
+            const colorClass = item.score >= 90 ? "text-green-500" : item.score >= 75 ? "text-orange-500" : "text-red-400";
+            const barColor = item.score >= 90 ? "bg-green-400" : item.score >= 75 ? "bg-orange-400" : "bg-red-400";
+            return (
             <div key={item.label}>
               <div className="flex justify-between mb-1">
                 <span className="text-base text-gray-700">{item.label}</span>
-                <span className="text-base font-bold text-orange-500">{item.score}点</span>
+                <span className={`text-base font-bold ${colorClass}`}>{item.score}点</span>
               </div>
               <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-orange-400 rounded-full transition-all duration-500"
+                  className={`h-full ${barColor} rounded-full transition-all duration-500`}
                   style={{ width: `${item.score}%` }}
                 />
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       </div>
 
-      {/* レーダーチャート */}
+      {/* 現在の心の状態 */}
       <div>
-        <p className="text-sm text-gray-500 mb-2">体操前後の総合比較</p>
-        <div className="bg-white rounded-2xl shadow-sm p-4">
-          <ResponsiveContainer width="100%" height={220}>
-            <RadarChart data={radarData}>
-              <PolarGrid />
-              <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11 }} />
-              <Radar
-                name="体操前"
-                dataKey="before"
-                stroke="#d1d5db"
-                fill="#d1d5db"
-                fillOpacity={0.3}
-              />
-              <Radar
-                name="体操後"
-                dataKey="after"
-                stroke="#f97316"
-                fill="#f97316"
-                fillOpacity={0.3}
-              />
-            </RadarChart>
-          </ResponsiveContainer>
-          <div className="flex justify-center gap-6 text-sm text-gray-500">
-            <div className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-gray-300 rounded-full" />
-              <span>体操前</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <div className="w-3 h-3 bg-orange-400 rounded-full" />
-              <span>体操後</span>
+        <p className="text-sm text-gray-500 mb-2">現在の心の状態</p>
+        <div className="bg-white rounded-2xl shadow-sm p-5">
+          <div className="flex items-center gap-4 mb-3">
+            <span className="text-5xl">{mentalEmoji}</span>
+            <div className="flex-1">
+              <div className="flex justify-between mb-1">
+                <span className="text-base text-gray-700">心の状態スコア</span>
+                <span className="text-base font-bold text-pink-500">{mentalScore}点</span>
+              </div>
+              <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-pink-400 rounded-full transition-all duration-500"
+                  style={{ width: `${mentalScore}%` }}
+                />
+              </div>
             </div>
           </div>
+          <p className="text-sm text-gray-500">{mentalMessage}</p>
         </div>
       </div>
 

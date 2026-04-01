@@ -81,6 +81,10 @@ export default function FamilySimplePage() {
 
       <div className="flex-1" />
 
+      <p className="text-sm text-gray-400 text-center mb-3 shrink-0">
+        ※ 設定はあとからいつでも変更できます
+      </p>
+
       <button
         onClick={() => router.push("/onboarding/goal")}
         className="w-full h-[56px] bg-orange-500 text-white text-xl font-bold rounded-2xl active:bg-orange-600 transition-colors duration-300 shrink-0"

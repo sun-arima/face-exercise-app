@@ -3,6 +3,11 @@
 import { useState, useEffect } from "react";
 import { familyReactions, familyStamps } from "@/lib/dummyData";
 
+const familyImages: Record<string, string> = {
+  "美咲": "/family-misaki.png",
+  "健太": "/family-kenta.png",
+};
+
 export default function FamilyPage() {
   const [showToast, setShowToast] = useState(true);
 
@@ -19,6 +24,8 @@ export default function FamilyPage() {
       date: r.date,
       emoji: s.emoji,
       from: s.from,
+      relation: (s as { relation?: string }).relation || "",
+      icon: (s as { icon?: string }).icon || "👤",
       label: familyStamps.find((fs) => fs.emoji === s.emoji)?.label || "",
     }))
   );
@@ -34,6 +41,9 @@ export default function FamilyPage() {
 
       <div>
         <h1 className="text-2xl font-bold text-gray-800">家族からのメッセージ</h1>
+        <p className="text-base text-gray-500 mt-1">
+          家族からもらった反応を確認できます
+        </p>
       </div>
 
       {/* リアクション一覧 */}
@@ -44,10 +54,21 @@ export default function FamilyPage() {
               key={i}
               className="bg-white rounded-2xl shadow-sm p-4 flex items-center gap-4"
             >
-              <span className="text-3xl">{r.emoji}</span>
+              {/* 家族アイコン */}
+              <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-orange-100">
+                {familyImages[r.from] ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={familyImages[r.from]} alt={r.from} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-2xl">{r.icon}</div>
+                )}
+              </div>
               <div className="flex-1">
-                <p className="text-lg font-medium text-gray-800">{r.from}</p>
-                <p className="text-sm text-gray-500">{r.label}</p>
+                <p className="text-base text-gray-500 mb-0.5">{r.relation} {r.from}</p>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-2xl">{r.emoji}</span>
+                  <p className="text-lg font-medium text-gray-800">{r.label}</p>
+                </div>
               </div>
               <span className="text-sm text-gray-400 shrink-0">{r.date}</span>
             </div>

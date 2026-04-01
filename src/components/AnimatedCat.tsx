@@ -8,10 +8,16 @@ export default function AnimatedCat({
   mood = "neutral",
   bounce = false,
   onClick,
+  mainColor = "#F5A623",
+  innerColor = "#FFD4A8",
+  bellyColor = "#FFF3E0",
 }: {
   mood?: Mood;
   bounce?: boolean;
   onClick?: () => void;
+  mainColor?: string;
+  innerColor?: string;
+  bellyColor?: string;
 }) {
   const [blink, setBlink] = useState(false);
   const [tailWag, setTailWag] = useState(false);
@@ -41,7 +47,7 @@ export default function AnimatedCat({
       className={`transition-transform duration-300 ${
         bounce ? "scale-110" : "scale-100"
       }`}
-      style={{ width: 140, height: 140 }}
+      style={{ width: 280, height: 280 }}
     >
       <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         {/* しっぽ */}
@@ -51,7 +57,7 @@ export default function AnimatedCat({
               ? "M 145 140 Q 180 100 170 80"
               : "M 145 140 Q 185 110 165 85"
           }
-          stroke="#F5A623"
+          stroke={mainColor}
           strokeWidth="8"
           fill="none"
           strokeLinecap="round"
@@ -59,24 +65,24 @@ export default function AnimatedCat({
         />
 
         {/* 体 */}
-        <ellipse cx="100" cy="145" rx="50" ry="35" fill="#F5A623" />
+        <ellipse cx="100" cy="145" rx="50" ry="35" fill={mainColor} />
 
         {/* 頭 */}
-        <circle cx="100" cy="90" r="42" fill="#F5A623" />
+        <circle cx="100" cy="90" r="42" fill={mainColor} />
 
         {/* 左耳 */}
-        <polygon points="65,55 55,20 85,45" fill="#F5A623" />
-        <polygon points="68,52 60,28 82,47" fill="#FFD4A8" />
+        <polygon points="65,55 55,20 85,45" fill={mainColor} />
+        <polygon points="68,52 60,28 82,47" fill={innerColor} />
 
         {/* 右耳 */}
-        <polygon points="135,55 145,20 115,45" fill="#F5A623" />
-        <polygon points="132,52 140,28 118,47" fill="#FFD4A8" />
+        <polygon points="135,55 145,20 115,45" fill={mainColor} />
+        <polygon points="132,52 140,28 118,47" fill={innerColor} />
 
         {/* お腹 */}
-        <ellipse cx="100" cy="150" rx="32" ry="22" fill="#FFF3E0" />
+        <ellipse cx="100" cy="150" rx="32" ry="22" fill={bellyColor} />
 
         {/* 顔の白い部分 */}
-        <ellipse cx="100" cy="98" rx="30" ry="25" fill="#FFF3E0" />
+        <ellipse cx="100" cy="98" rx="30" ry="25" fill={bellyColor} />
 
         {/* 目 */}
         {eyeOpen ? (
@@ -119,8 +125,8 @@ export default function AnimatedCat({
         <line x1="122" y1="97" x2="142" y2="97" stroke="#5D4037" strokeWidth="1.2" />
 
         {/* 前足 */}
-        <ellipse cx="80" cy="168" rx="12" ry="8" fill="#F5A623" />
-        <ellipse cx="120" cy="168" rx="12" ry="8" fill="#F5A623" />
+        <ellipse cx="80" cy="168" rx="12" ry="8" fill={mainColor} />
+        <ellipse cx="120" cy="168" rx="12" ry="8" fill={mainColor} />
 
         {/* 頬の赤み（happyの時） */}
         {mood === "happy" && (

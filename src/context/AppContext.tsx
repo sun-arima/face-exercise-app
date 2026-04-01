@@ -27,7 +27,7 @@ const AppContext = createContext<AppState | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [cameraPermission, setCameraPermission] = useState(false);
-  const [goalMinutes, setGoalMinutes] = useState(15);
+  const [goalMinutes, setGoalMinutes] = useState(10);
   const [shareActivity, setShareActivity] = useState(true);
   const [shareCount, setShareCount] = useState(true);
   const [shareMentalScore, setShareMentalScore] = useState(false);

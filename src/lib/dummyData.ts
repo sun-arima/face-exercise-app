@@ -54,19 +54,19 @@ export const exerciseSteps = [
     name: "口を大きく開ける",
     effect: "表情を豊かにする動きです！",
     duration: 3,
-    repeatCount: 4,
+    repeatCount: 1,
   },
   {
     name: "舌を出す",
     effect: "飲み込む力をきたえる動きです！",
     duration: 3,
-    repeatCount: 4,
+    repeatCount: 1,
   },
   {
     name: "頬を膨らませる",
     effect: "頬の力を強くする動きです！",
     duration: 3,
-    repeatCount: 4,
+    repeatCount: 1,
   },
 ];
 
@@ -111,8 +111,8 @@ export const familyReactions = [
     message: "体操3回達成しました！",
     seen: true,
     stamps: [
-      { emoji: "❤️", from: "佐藤 美咲" },
-      { emoji: "👏", from: "佐藤 健太" },
+      { emoji: "❤️", from: "美咲", relation: "娘", icon: "👩" },
+      { emoji: "👏", from: "健太", relation: "息子", icon: "👨" },
     ],
   },
   {
@@ -120,14 +120,43 @@ export const familyReactions = [
     message: "体操2回達成しました！",
     seen: true,
     stamps: [
-      { emoji: "😊", from: "佐藤 美咲" },
+      { emoji: "😊", from: "美咲", relation: "娘", icon: "👩" },
+      { emoji: "💪", from: "健太", relation: "息子", icon: "👨" },
     ],
   },
   {
     date: "3月14日",
     message: "体操1回達成しました！",
-    seen: false,
-    stamps: [],
+    seen: true,
+    stamps: [
+      { emoji: "👏", from: "美咲", relation: "娘", icon: "👩" },
+    ],
+  },
+  {
+    date: "3月13日",
+    message: "体操2回達成しました！",
+    seen: true,
+    stamps: [
+      { emoji: "❤️", from: "健太", relation: "息子", icon: "👨" },
+      { emoji: "😊", from: "美咲", relation: "娘", icon: "👩" },
+    ],
+  },
+  {
+    date: "3月11日",
+    message: "体操1回達成しました！",
+    seen: true,
+    stamps: [
+      { emoji: "💪", from: "美咲", relation: "娘", icon: "👩" },
+    ],
+  },
+  {
+    date: "3月10日",
+    message: "7日連続達成！",
+    seen: true,
+    stamps: [
+      { emoji: "👏", from: "健太", relation: "息子", icon: "👨" },
+      { emoji: "❤️", from: "美咲", relation: "娘", icon: "👩" },
+    ],
   },
 ];
 
@@ -184,13 +213,17 @@ export const familyStamps = [
 export const dailyLog = [
   {
     date: "3月16日（土）",
+    mentalScore: 78,
+    mentalEmoji: "😊",
     records: [
-      { menu: "ほっぺ膨らまし", time: "3分12秒", tags: ["表情の豊かさ"] },
-      { menu: "舌回し体操", time: "2分45秒", tags: ["飲み込む力"] },
+      { menu: "ほっぺ膨らまし", time: "3分12秒", startTime: "10:15", tags: ["表情の豊かさ"], viewers: ["美咲", "健太"] },
+      { menu: "舌回し体操", time: "2分45秒", startTime: "10:20", tags: ["飲み込む力"], viewers: ["美咲"] },
     ],
   },
   {
     date: "3月15日（金）",
+    mentalScore: 85,
+    mentalEmoji: "😄",
     records: [
       { menu: "あいうえお体操", time: "2分30秒", tags: ["声を出す力"] },
       { menu: "目の体操", time: "3分10秒", tags: ["脳の刺激"] },
@@ -199,10 +232,14 @@ export const dailyLog = [
   },
   {
     date: "3月14日（木）",
+    mentalScore: 65,
+    mentalEmoji: "😐",
     records: [{ menu: "舌回し体操", time: "3分00秒", tags: ["飲み込む力"] }],
   },
   {
     date: "3月13日（水）",
+    mentalScore: 80,
+    mentalEmoji: "😊",
     records: [
       { menu: "あいうえお体操", time: "2分20秒", tags: ["声を出す力"] },
       { menu: "ほっぺ膨らまし", time: "3分42秒", tags: ["表情の豊かさ"] },
@@ -210,14 +247,20 @@ export const dailyLog = [
   },
   {
     date: "3月12日（火）",
+    mentalScore: 0,
+    mentalEmoji: "",
     records: [],
   },
   {
     date: "3月11日（月）",
+    mentalScore: 72,
+    mentalEmoji: "🙂",
     records: [{ menu: "目の体操", time: "3分15秒", tags: ["脳の刺激"] }],
   },
   {
     date: "3月10日（日）",
+    mentalScore: 0,
+    mentalEmoji: "",
     records: [],
   },
 ];
@@ -225,32 +268,46 @@ export const dailyLog = [
 export const prevDailyLog = [
   {
     date: "3月9日（土）",
+    mentalScore: 65,
+    mentalEmoji: "🙂",
     records: [{ menu: "ほっぺ膨らまし", time: "2分50秒", tags: ["表情の豊かさ"] }],
   },
   {
     date: "3月8日（金）",
+    mentalScore: 70,
+    mentalEmoji: "😊",
     records: [
       { menu: "舌回し体操", time: "3分00秒", tags: ["飲み込む力"] },
     ],
   },
   {
     date: "3月7日（木）",
+    mentalScore: 0,
+    mentalEmoji: "",
     records: [],
   },
   {
     date: "3月6日（水）",
+    mentalScore: 68,
+    mentalEmoji: "🙂",
     records: [{ menu: "あいうえお体操", time: "2分10秒", tags: ["声を出す力"] }],
   },
   {
     date: "3月5日（火）",
+    mentalScore: 0,
+    mentalEmoji: "",
     records: [],
   },
   {
     date: "3月4日（月）",
+    mentalScore: 60,
+    mentalEmoji: "😐",
     records: [{ menu: "目の体操", time: "3分00秒", tags: ["脳の刺激"] }],
   },
   {
     date: "3月3日（日）",
+    mentalScore: 62,
+    mentalEmoji: "🙂",
     records: [{ menu: "ほっぺ膨らまし", time: "2分30秒", tags: ["表情の豊かさ"] }],
   },
 ];

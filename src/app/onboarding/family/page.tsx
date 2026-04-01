@@ -144,6 +144,10 @@ export default function FamilySettingPage() {
         </div>
       </div>
 
+      <p className="text-xs text-gray-400 text-center mt-2 shrink-0">
+        ※ 設定はあとからいつでも変更できます
+      </p>
+
       <button
         onClick={() => router.push("/onboarding/goal")}
         className="w-full h-[52px] bg-orange-500 text-white text-lg font-bold rounded-2xl active:bg-orange-600 transition-colors duration-300 shrink-0 mt-2"

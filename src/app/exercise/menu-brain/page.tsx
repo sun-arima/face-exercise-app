@@ -6,34 +6,34 @@ import { ChevronRight, Brain } from "lucide-react";
 const brainMenus = [
   {
     id: "brain-1",
-    name: "しりとり体操",
-    emoji: "💬",
-    duration: "約3分",
-    description: "声を出しながら頭を使います",
+    name: "色読みテスト",
+    emoji: "🎨",
+    duration: "約2分",
+    description: "文字の色と意味が違うものを判断します",
     color: "bg-purple-100",
   },
   {
     id: "brain-2",
-    name: "逆さ言葉体操",
-    emoji: "🔄",
-    duration: "約2分",
-    description: "言葉を逆さにして発声します",
+    name: "計算チャレンジ",
+    emoji: "🧮",
+    duration: "約3分",
+    description: "簡単な足し算・引き算を素早く解きます",
     color: "bg-blue-100",
   },
   {
     id: "brain-3",
-    name: "数かぞえ体操",
-    emoji: "🔢",
+    name: "記憶カード",
+    emoji: "🃏",
     duration: "約3分",
-    description: "数をかぞえながら顔を動かします",
+    description: "表示されたカードの位置を覚えます",
     color: "bg-green-100",
   },
   {
     id: "brain-4",
-    name: "じゃんけん表情",
-    emoji: "✊",
+    name: "言葉つなぎ",
+    emoji: "📝",
     duration: "約2分",
-    description: "じゃんけんに合わせて表情を変えます",
+    description: "お題に合う言葉をできるだけ多く思い出します",
     color: "bg-pink-100",
   },
 ];
@@ -48,8 +48,8 @@ export default function BrainExerciseMenuPage() {
           <Brain className="text-purple-500" size={28} />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">脳トレ体操</h1>
-          <p className="text-base text-gray-500">頭と顔を同時にきたえます</p>
+          <h1 className="text-2xl font-bold text-gray-800">脳トレ</h1>
+          <p className="text-base text-gray-500">認知症予防のトレーニング</p>
         </div>
       </div>
 
@@ -57,7 +57,7 @@ export default function BrainExerciseMenuPage() {
         {brainMenus.map((menu) => (
           <button
             key={menu.id}
-            onClick={() => router.push(`/exercise/1/guide`)}
+            onClick={() => router.push(`/exercise/brain/${menu.id}`)}
             className="w-full bg-white rounded-2xl shadow-sm p-4 flex items-center gap-4 active:bg-gray-50 transition-colors duration-300"
           >
             <div
@@ -75,12 +75,11 @@ export default function BrainExerciseMenuPage() {
         ))}
       </div>
 
-      {/* 通常の体操メニューへの切替 */}
       <button
         onClick={() => router.push("/exercise/menu")}
         className="w-full h-14 bg-gray-100 text-gray-600 border border-gray-300 text-lg font-medium rounded-2xl"
       >
-        通常の体操メニューに切り替え
+        顔まわり体操に切り替え
       </button>
     </div>
   );

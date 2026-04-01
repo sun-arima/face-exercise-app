@@ -37,73 +37,34 @@ export default function AnalysisPage() {
       {/* ビフォーアフター比較 */}
       <div className="flex gap-4">
         <div className="flex-1 flex flex-col items-center gap-2">
-          <div className="relative w-full h-36 bg-gray-300 rounded-2xl overflow-hidden">
-            {(
-              <svg className="absolute inset-0 w-full h-full">
-                <ellipse
-                  cx="50%"
-                  cy="70%"
-                  rx="25"
-                  ry="12"
-                  fill="rgba(249,115,22,0.4)"
-                />
-                <text
-                  x="50%"
-                  y="70%"
-                  textAnchor="middle"
-                  dy="4"
-                  fontSize="10"
-                  fill="#c2410c"
-                >
-                  改善
-                </text>
-              </svg>
-            )}
+          <div className="relative w-full h-36 rounded-2xl overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/before.png" alt="体操前" className="w-full h-full object-cover" />
+            {/* ハイライト（改善前） */}
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <ellipse cx="28" cy="58" rx="14" ry="9" fill="rgba(251,146,60,0.35)" />
+              <ellipse cx="72" cy="58" rx="14" ry="9" fill="rgba(251,146,60,0.35)" />
+              <ellipse cx="50" cy="72" rx="12" ry="7" fill="rgba(251,146,60,0.25)" />
+            </svg>
           </div>
           <span className="text-lg text-gray-600">
             {analysisReport.beforePhotoLabel}
           </span>
         </div>
         <div className="flex-1 flex flex-col items-center gap-2">
-          <div className="relative w-full h-36 bg-gray-300 rounded-2xl overflow-hidden">
-            {(
-              <svg className="absolute inset-0 w-full h-full">
-                <ellipse
-                  cx="50%"
-                  cy="72%"
-                  rx="28"
-                  ry="14"
-                  fill="rgba(249,115,22,0.4)"
-                />
-                <text
-                  x="50%"
-                  y="72%"
-                  textAnchor="middle"
-                  dy="4"
-                  fontSize="10"
-                  fill="#c2410c"
-                >
-                  改善
-                </text>
-                <ellipse
-                  cx="30%"
-                  cy="55%"
-                  rx="20"
-                  ry="15"
-                  fill="rgba(249,115,22,0.3)"
-                />
-                <text
-                  x="30%"
-                  y="55%"
-                  textAnchor="middle"
-                  dy="4"
-                  fontSize="10"
-                  fill="#c2410c"
-                >
-                  改善
-                </text>
-              </svg>
-            )}
+          <div className="relative w-full h-36 rounded-2xl overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/after.png" alt="体操後" className="w-full h-full object-cover" />
+            {/* ハイライト（改善後） */}
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <ellipse cx="28" cy="58" rx="14" ry="9" fill="rgba(34,197,94,0.4)" />
+              <ellipse cx="72" cy="58" rx="14" ry="9" fill="rgba(34,197,94,0.4)" />
+              <ellipse cx="50" cy="72" rx="12" ry="7" fill="rgba(34,197,94,0.3)" />
+            </svg>
+            {/* 改善ラベル */}
+            <div className="absolute bottom-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+              改善 ✓
+            </div>
           </div>
           <span className="text-lg text-gray-600">
             {analysisReport.afterPhotoLabel}

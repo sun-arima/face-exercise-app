@@ -115,30 +115,30 @@ export default function LogPage() {
               <p className="text-lg text-gray-400 ml-2">この日は休みました</p>
             ) : (
               <div className="space-y-2">
-                {day.records.map((rec, ri) => (
-                  <div
-                    key={ri}
-                    className="bg-white rounded-2xl shadow-sm p-4 flex items-center gap-3"
-                  >
-                    <div className="w-12 h-12 bg-gray-200 rounded-full shrink-0" />
-                    <div className="flex-1">
-                      <p className="text-lg font-medium text-gray-800">
-                        {rec.menu}
-                      </p>
-                      <p className="text-sm text-gray-500">{rec.time}</p>
+                {day.records.map((rec, ri) => {
+                  const emoji =
+                    day.mentalScore >= 80 ? "😄" :
+                    day.mentalScore >= 65 ? "😊" :
+                    day.mentalScore >= 50 ? "😌" :
+                    day.mentalScore > 0 ? "😩" : "";
+                  return (
+                    <div
+                      key={ri}
+                      className="bg-white rounded-2xl shadow-sm p-4 flex items-center gap-3"
+                    >
+                      <div className="flex-1">
+                        <p className="text-lg font-medium text-gray-800">{rec.menu}</p>
+                        <p className="text-sm text-gray-500">{rec.time}</p>
+                      </div>
+                      {day.mentalScore > 0 && (
+                        <div className="shrink-0 flex items-center gap-1 bg-pink-50 px-3 py-1.5 rounded-full">
+                          <span className="text-xl">{emoji}</span>
+                          <span className="text-base font-bold text-pink-500">{day.mentalScore}点</span>
+                        </div>
+                      )}
                     </div>
-                    <div className="flex gap-1">
-                      {rec.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
