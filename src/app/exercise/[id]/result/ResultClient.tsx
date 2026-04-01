@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { badges } from "@/lib/dummyData";
+import { asset } from "@/lib/assetPath";
 
 const performanceData = [
   { label: "口の開き", score: 82, maxScore: 100 },
@@ -47,14 +48,14 @@ export default function ResultClient() {
           <div className="flex-1 flex flex-col items-center gap-2">
             <div className="w-full h-28 rounded-2xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/before.png" alt="体操前" className="w-full h-full object-cover" />
+              <img src={asset("/before.png")} alt="体操前" className="w-full h-full object-cover" />
             </div>
             <span className="text-lg text-gray-600">体操前</span>
           </div>
           <div className="flex-1 flex flex-col items-center gap-2">
             <div className="w-full h-28 rounded-2xl overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/after.png" alt="体操後" className="w-full h-full object-cover" />
+              <img src={asset("/after.png")} alt="体操後" className="w-full h-full object-cover" />
             </div>
             <span className="text-lg text-gray-600">体操後</span>
           </div>

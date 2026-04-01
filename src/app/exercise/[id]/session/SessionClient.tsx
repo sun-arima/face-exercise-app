@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
+import { asset } from "@/lib/assetPath";
 
 export default function SessionClient() {
   const router = useRouter();
@@ -28,7 +29,7 @@ export default function SessionClient() {
       {/* インストラクター動画 */}
       <div className="rounded-2xl flex-[3] min-h-0 overflow-hidden shrink-0">
         <video
-          src="/traning.mp4"
+          src={asset("/traning.mp4")}
           autoPlay
           loop
           muted

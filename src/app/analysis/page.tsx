@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, Sparkles, Clock, Activity } from "lucide-react";
 import { analysisReport } from "@/lib/dummyData";
+import { asset } from "@/lib/assetPath";
 
 export default function AnalysisPage() {
   const [openIndicator, setOpenIndicator] = useState<number | null>(null);
@@ -39,7 +40,7 @@ export default function AnalysisPage() {
         <div className="flex-1 flex flex-col items-center gap-2">
           <div className="relative w-full h-36 rounded-2xl overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/before.png" alt="体操前" className="w-full h-full object-cover" />
+            <img src={asset("/before.png")} alt="体操前" className="w-full h-full object-cover" />
             {/* ハイライト（改善前） */}
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <ellipse cx="28" cy="58" rx="14" ry="9" fill="rgba(251,146,60,0.35)" />
@@ -54,7 +55,7 @@ export default function AnalysisPage() {
         <div className="flex-1 flex flex-col items-center gap-2">
           <div className="relative w-full h-36 rounded-2xl overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/after.png" alt="体操後" className="w-full h-full object-cover" />
+            <img src={asset("/after.png")} alt="体操後" className="w-full h-full object-cover" />
             {/* ハイライト（改善後） */}
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <ellipse cx="28" cy="58" rx="14" ry="9" fill="rgba(34,197,94,0.4)" />

@@ -4,11 +4,12 @@ import { useState } from "react";
 import { Heart, Send, Sparkles } from "lucide-react";
 import { dailyLog } from "@/lib/dummyData";
 import AnimatedCat from "@/components/AnimatedCat";
+import { asset } from "@/lib/assetPath";
 
 const familyMember = {
   name: "美咲",
   relation: "娘",
-  image: "/family-misaki.png",
+  image: asset("/family-misaki.png"),
 };
 
 export default function FamilyViewPage() {
@@ -131,7 +132,7 @@ export default function FamilyViewPage() {
                   <div className="px-4 pb-4 flex items-center gap-2">
                     <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-orange-200 shrink-0">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/after.png" alt="自分" className="w-full h-full object-cover" />
+                      <img src={asset("/after.png")} alt="自分" className="w-full h-full object-cover" />
                     </div>
                     <input
                       type="text"

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { menus } from "@/lib/dummyData";
+import { asset } from "@/lib/assetPath";
 
 export default function GuideClient() {
   const router = useRouter();
@@ -46,7 +47,7 @@ export default function GuideClient() {
       {/* 動画エリア */}
       <div className="rounded-2xl mt-4 overflow-hidden bg-black aspect-[4/3] w-full shrink-0">
         <video
-          src="/traning.mp4"
+          src={asset("/traning.mp4")}
           autoPlay
           loop
           muted

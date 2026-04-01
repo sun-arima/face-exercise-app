@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { familyReactions, familyStamps } from "@/lib/dummyData";
+import { asset } from "@/lib/assetPath";
 
 const familyImages: Record<string, string> = {
-  "美咲": "/family-misaki.png",
-  "健太": "/family-kenta.png",
+  "美咲": asset("/family-misaki.png"),
+  "健太": asset("/family-kenta.png"),
 };
 
 export default function FamilyPage() {
